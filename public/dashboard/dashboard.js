@@ -1,3 +1,11 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const userName = localStorage.getItem("userName");
+
+  if (userName) {
+    document.getElementById("welcomeMessage").innerText =
+      `Welcome back, ${userName}`;
+  }
+});
 let token = localStorage.getItem("token");
 
 if (!token) {
@@ -5,7 +13,7 @@ if (!token) {
 }
 function logout() {
   localStorage.removeItem("token");
-
+  localStorage.removeItem("userName");
   alert("Logged out successfully");
 
   window.location.href = "../login.html";

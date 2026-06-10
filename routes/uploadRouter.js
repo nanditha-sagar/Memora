@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
-const path = require("path");
 const pool = require("../db");
 
 // Multer Storage Configuration
@@ -38,14 +37,14 @@ const upload = multer({
   storage,
   fileFilter,
   limits: {
-    fileSize: 100 * 1024 * 1024, // 100 MB
+    fileSize: 100 * 1024 * 1024,
   },
 });
 
 // Upload Resource
 router.post("/resource", upload.single("file"), async (req, res) => {
   try {
-    const { title, description } = req.body;
+    const { title, description, tags, collection } = req.body;
 
     if (!req.file) {
       return res.status(400).json({
@@ -60,12 +59,21 @@ router.post("/resource", upload.single("file"), async (req, res) => {
       (
         title,
         description,
+        tags,
+        collection_name,
         file_name,
         file_path
       )
-      VALUES (?, ?, ?, ?)
+      VALUES (?, ?, ?, ?, ?, ?)
       `,
-      [title, description, req.file.originalname, req.file.path],
+      [
+        title,
+        description,
+        tags || null,
+        collection || null,
+        req.file.originalname,
+        req.file.path,
+      ],
     );
 
     res.status(201).json({
@@ -73,6 +81,9 @@ router.post("/resource", upload.single("file"), async (req, res) => {
       message: "Resource uploaded successfully",
       data: {
         title,
+        description,
+        tags,
+        collection,
         fileName: req.file.originalname,
         filePath: req.file.path,
       },

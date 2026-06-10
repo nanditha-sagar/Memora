@@ -45,6 +45,8 @@ async function signup() {
   if (data.status === "success") {
     message.innerText = "Signup Successful";
 
+    localStorage.setItem("userName", username);
+
     setTimeout(() => {
       window.location.href = "./login.html";
     }, 1000);
@@ -93,6 +95,12 @@ async function login() {
     message.innerText = "Login Successful";
 
     localStorage.setItem("token", data.token);
+
+    // Save username
+    localStorage.setItem(
+      "userName",
+      data.username || localStorage.getItem("userName"),
+    );
 
     setTimeout(() => {
       window.location.href = "dashboard/dashboard.html";
