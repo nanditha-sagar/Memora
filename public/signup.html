@@ -1,27 +1,61 @@
 <!doctype html>
 <html>
   <head>
-    <title>Signup</title>
+    <title>Memora - Sign Up</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
-    <div class="container">
-      <h2>Signup</h2>
+    <div class="auth-container">
+      <div class="auth-card">
+        <div class="logo">🧠 Memora</div>
 
-      <input type="text" id="username" placeholder="Username" />
+        <h1>Create Account</h1>
 
-      <input type="email" id="email" placeholder="Email" />
+        <p class="subtitle">Build your personal knowledge library.</p>
 
-      <input type="password" id="password" placeholder="Password" />
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" id="username" placeholder="Enter username" />
+        </div>
 
-      <button onclick="signup()">Signup</button>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="email" placeholder="Enter email" />
+        </div>
 
-      <p id="message"></p>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="password" placeholder="Create password" />
+        </div>
 
-      <p>
-        Already have an account?
-        <a href="login.html">Login</a>
-      </p>
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            placeholder="Confirm password"
+          />
+        </div>
+
+        <p class="password-info">
+          Password should contain at least 8 characters.
+        </p>
+
+        <div class="terms">
+          <input type="checkbox" id="terms" />
+          <label for="terms"> I agree to the Terms & Conditions </label>
+        </div>
+
+        <button onclick="signup()">Create Account</button>
+
+        <p id="message"></p>
+
+        <div class="footer-link">
+          Already have an account?
+          <a href="login.html">Login</a>
+        </div>
+      </div>
     </div>
 
     <script src="script.js"></script>

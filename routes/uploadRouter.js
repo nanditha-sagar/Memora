@@ -98,4 +98,31 @@ router.post("/resource", upload.single("file"), async (req, res) => {
   }
 });
 
+// Get Recent Uploads
+router.get("/recent", async (req, res) => {
+  try {
+    const [resources] = await pool.query(`
+      SELECT
+        id,
+        title,
+        description,
+        file_name,
+        file_path,
+        created_at
+      FROM resources
+      ORDER BY created_at DESC
+      LIMIT 6
+    `);
+
+    res.json(resources);
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      status: "error",
+      message: error.message,
+    });
+  }
+});
+
 module.exports = router;

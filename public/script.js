@@ -27,6 +27,17 @@ async function signup() {
     message.innerText = "Please enter password";
     return;
   }
+  const confirmPassword = document.getElementById("confirmPassword").value;
+
+  if (password !== confirmPassword) {
+    message.innerText = "Passwords do not match";
+    return;
+  }
+
+  if (!document.getElementById("terms").checked) {
+    message.innerText = "Please accept Terms & Conditions";
+    return;
+  }
 
   let response = await fetch("http://localhost:3001/auth/signup", {
     method: "POST",
