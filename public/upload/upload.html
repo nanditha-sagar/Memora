@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Upload Resource</title>
+    <link rel="stylesheet" href="upload.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="upload-header">
+        <div>
+          <h1>📤 Upload Resource</h1>
+          <p>Add new knowledge to your library.</p>
+        </div>
+      </div>
+
+      <div class="upload-zone">
+        <h2>Drag & Drop Files</h2>
+
+        <p>or Browse Your Device</p>
+
+        <input type="file" id="fileUpload" />
+      </div>
+
+      <div class="resource-form">
+        <h2>Resource Information</h2>
+
+        <div class="form-group">
+          <label for="resourceTitle"> Resource Title </label>
+
+          <input
+            type="text"
+            id="resourceTitle"
+            placeholder="Enter resource title"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="description"> Description </label>
+
+          <textarea id="description" placeholder="Enter resource description">
+          </textarea>
+        </div>
+
+        <div class="upload-zone">
+          <h2>Optional: Add Tags</h2>
+
+          <p>Use tags to organize your resources.</p>
+
+          <input type="text" id="tags" placeholder="e.g. AI, Machine Learning" />
+
+        <p id="uploadMessage"></p>
+
+        <button class="upload-btn" onclick="uploadResource()">
+          Upload Resource
+        </button>
+
+        <button class="upload-btn" onclick="goBack()">Back to Dashboard</button>
+      </div>
+    </div>
+
+    <script src="upload.js"></script>
+  </body>
+</html>

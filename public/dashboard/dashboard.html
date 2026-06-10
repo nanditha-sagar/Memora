@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Memora Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="logo">🧠 Memora</div>
+
+        <nav>
+          <a class="active">🏠 Dashboard</a>
+          <a>📂 Collections</a>
+          <a>📚 Resources</a>
+          <a>⭐ Favorites</a>
+          <a>🕒 Recent</a>
+          <a>📊 Insights</a>
+          <a>🤖 AI Assistant</a>
+          <a>👤 Profile</a>
+          <a>⚙ Settings</a>
+        </nav>
+
+        <button class="logout-btn" onclick="logout()">Logout</button>
+      </aside>
+
+      <main class="main-content">
+        <header class="header">
+          <div>
+            <h1>Welcome back, User</h1>
+            <p>Continue building your knowledge library.</p>
+          </div>
+
+          <div class="header-right">
+            <input
+              type="text"
+              placeholder="Search resources..."
+              class="search-bar"
+            />
+
+            <button class="upload-btn" onclick="openUploadPage()">
+    + Upload Resource
+</button>
+          </div>
+        </header>
+
+        <section class="stats">
+          <div class="card">
+            <h3>Collections</h3>
+            <h2>12</h2>
+          </div>
+
+          <div class="card">
+            <h3>Resources</h3>
+            <h2>248</h2>
+          </div>
+
+          <div class="card">
+            <h3>Favorites</h3>
+            <h2>34</h2>
+          </div>
+
+          <div class="card">
+            <h3>Storage</h3>
+            <h2>3.2 GB</h2>
+          </div>
+        </section>
+
+        <section class="collections">
+          <div class="section-title">
+            <h2>Recent Collections</h2>
+
+            <button>View All</button>
+          </div>
+
+          <div class="collection-grid">
+            <div class="collection-card">
+              <img src="https://picsum.photos/300/200?1" />
+              <h3>Machine Learning</h3>
+              <p>45 Resources</p>
+            </div>
+
+            <div class="collection-card">
+              <img src="https://picsum.photos/300/200?2" />
+              <h3>Operating Systems</h3>
+              <p>18 Resources</p>
+            </div>
+
+            <div class="collection-card">
+              <img src="https://picsum.photos/300/200?3" />
+              <h3>DBMS</h3>
+              <p>25 Resources</p>
+            </div>
+
+            <div class="collection-card">
+              <img src="https://picsum.photos/300/200?4" />
+              <h3>Interview Prep</h3>
+              <p>60 Resources</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="resources">
+          <h2>Featured Resources</h2>
+
+          <div class="resource-grid">
+            <div class="resource-card">
+              <h3>CNN Notes.pdf</h3>
+              <span>PDF</span>
+            </div>
+
+            <div class="resource-card">
+              <h3>React Hooks Guide</h3>
+              <span>Notes</span>
+            </div>
+
+            <div class="resource-card">
+              <h3>Semester Revision</h3>
+              <span>Voice Note</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="activity">
+          <h2>Recent Activity</h2>
+
+          <div class="activity-item">
+            <div class="activity-content">
+              <h4>📄 Uploaded Deep Learning.pdf</h4>
+              <p>Uploaded on June 10, 2026 • 10:30 AM</p>
+            </div>
+          </div>
+
+          <div class="activity-item">
+            <div class="activity-content">
+              <h4>📂 Created Research Papers Collection</h4>
+              <p>Created on June 9, 2026 • 6:45 PM</p>
+            </div>
+          </div>
+
+          <div class="activity-item">
+            <h4>📄 Uploaded Deep Learning.pdf</h4>
+
+            <p id="uploadDate"></p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+  </body>
+</html>
