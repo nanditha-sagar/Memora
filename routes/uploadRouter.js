@@ -42,9 +42,10 @@ const upload = multer({
 });
 
 // Upload Resource
+// Upload Resource
 router.post("/resource", upload.single("file"), async (req, res) => {
   try {
-    const { title, description, tags, collection } = req.body;
+    const { title, description, tags, collection, collection_id } = req.body;
 
     if (!req.file) {
       return res.status(400).json({
@@ -61,16 +62,18 @@ router.post("/resource", upload.single("file"), async (req, res) => {
         description,
         tags,
         collection_name,
+        collection_id,
         file_name,
         file_path
       )
-      VALUES (?, ?, ?, ?, ?, ?)
+      VALUES (?, ?, ?, ?, ?, ?, ?)
       `,
       [
         title,
         description,
         tags || null,
         collection || null,
+        collection_id || null,
         req.file.originalname,
         req.file.path,
       ],
@@ -84,6 +87,7 @@ router.post("/resource", upload.single("file"), async (req, res) => {
         description,
         tags,
         collection,
+        collection_id,
         fileName: req.file.originalname,
         filePath: req.file.path,
       },
@@ -113,6 +117,30 @@ router.get("/recent", async (req, res) => {
       ORDER BY created_at DESC
       LIMIT 6
     `);
+
+    res.json(resources);
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      status: "error",
+      message: error.message,
+    });
+  }
+});
+
+// Get Resources By Collection
+router.get("/collection/:id", async (req, res) => {
+  try {
+    const [resources] = await pool.query(
+      `
+      SELECT *
+      FROM resources
+      WHERE collection_id = ?
+      ORDER BY created_at DESC
+      `,
+      [req.params.id],
+    );
 
     res.json(resources);
   } catch (error) {

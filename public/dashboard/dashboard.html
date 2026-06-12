@@ -11,7 +11,9 @@
 
         <nav>
           <a class="active">🏠 Dashboard</a>
-          <a>📂 Collections</a>
+          <a href="../collections/collections.html">
+  📂 Collections
+</a>
           <a>📚 Resources</a>
           <a>⭐ Favorites</a>
           <a>🕒 Recent</a>
@@ -70,29 +72,40 @@
           <div class="section-title">
             <h2>Recent Collections</h2>
 
-            <button>View All</button>
+            <button onclick="viewAllCollections()"  >View All</button>
           </div>
 
           <div class="collection-grid">
-            <div class="collection-card">
+            <div
+  class="collection-card"
+  onclick="openCollection('Machine Learning')"
+>
               <img src="https://picsum.photos/300/200?1" />
               <h3>Machine Learning</h3>
               <p>45 Resources</p>
             </div>
 
-            <div class="collection-card">
+            <div
+  class="collection-card"
+  onclick="openCollection('Operating Systems')"
+>
               <img src="https://picsum.photos/300/200?2" />
               <h3>Operating Systems</h3>
               <p>18 Resources</p>
             </div>
-
-            <div class="collection-card">
+            
+            <div
+  class="collection-card"
+  onclick="openCollection('Machine Learning')"
+>
               <img src="https://picsum.photos/300/200?3" />
               <h3>DBMS</h3>
               <p>25 Resources</p>
             </div>
-
-            <div class="collection-card">
+<div
+  class="collection-card"
+  onclick="openCollection('Resources for Interview Preparation')"
+>
               <img src="https://picsum.photos/300/200?4" />
               <h3>Interview Prep</h3>
               <p>60 Resources</p>
@@ -146,7 +159,7 @@
 <section class="recent-uploads">
   <div class="section-title">
     <h2>Recent Uploads</h2>
-    <button>View All</button>
+    <button onclick="viewAllUploads()">View All</button>
   </div>
 
   <div class="upload-grid" id="recentUploads">

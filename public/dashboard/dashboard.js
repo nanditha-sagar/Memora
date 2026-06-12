@@ -51,12 +51,11 @@ async function loadRecentUploads() {
 
     container.innerHTML = "";
 
-   uploads.forEach((upload) => {
-  const fileUrl =
-    "http://localhost:3001/" +
-    upload.file_path.replace(/\\/g, "/");
+    uploads.forEach((upload) => {
+      const fileUrl =
+        "http://localhost:3001/" + upload.file_path.replace(/\\/g, "/");
 
-  container.innerHTML += `
+      container.innerHTML += `
     <div class="upload-card">
       <h3>📄 ${upload.title}</h3>
       <p>${upload.description}</p>
@@ -70,8 +69,13 @@ async function loadRecentUploads() {
       </button>
     </div>
   `;
-});
+    });
   } catch (error) {
     console.error("Error loading uploads:", error);
   }
+}
+function openCollection(name) {
+  localStorage.setItem("selectedCollection", name);
+
+  window.location.href = "../collections/collections.html";
 }

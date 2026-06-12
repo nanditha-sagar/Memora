@@ -3,6 +3,7 @@ const path = require("path");
 
 const authRouter = require("./routes/authRouter");
 const uploadRouter = require("./routes/uploadRouter");
+const collectionRouter = require("./routes/collectionRouter");
 
 const app = express();
 
@@ -13,7 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 // Static files
 app.use(express.static(path.join(__dirname, "public")));
 
-// Serve uploaded files
+// Uploaded files
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Home Route
@@ -21,10 +22,10 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "login.html"));
 });
 
-// Routes
+// API Routes
 app.use("/auth", authRouter);
 app.use("/upload", uploadRouter);
-
+app.use("/collections", collectionRouter);
 
 // 404 Handler
 app.use((req, res) => {

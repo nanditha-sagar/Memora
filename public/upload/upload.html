@@ -44,12 +44,16 @@
         <div class="form-group">
   <label for="collection">Collection</label>
 
-  <select id="collection">
-    <option value="">No Collection</option>
-    <option value="Machine Learning">Machine Learning</option>
-    <option value="DBMS">DBMS</option>
-    <option value="new">+ Create New Collection</option>
-  </select>
+  <select id="collectionSelect">
+  <option value="">Select Collection</option>
+</select>
+
+<button
+  type="button"
+  onclick="window.open('../collections/collections.html')"
+>
+  + Create Collection
+</button>
 </div>
 
 <div class="form-group" id="newCollectionDiv" style="display:none;">
